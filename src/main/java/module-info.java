@@ -5,7 +5,6 @@ module com.coursesys.coursesystem23 {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires java.persistence;
-    requires com.google.gson;
 
 
     opens com.coursesys.coursesystem23 to javafx.fxml;
