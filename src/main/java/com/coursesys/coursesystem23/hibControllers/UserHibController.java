@@ -12,7 +12,10 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserHibController {
 
@@ -62,26 +65,6 @@ public class UserHibController {
         }
     }
 
-    public void leaveCourse(Person person, Course course) {
-
-        EntityManager em = null;
-
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            person.getMyEnrolledCourses().remove(course);
-            System.out.println(course.getStudents());
-            System.out.println(person.getMyEnrolledCourses());
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
-    }
-
     public void remove(int id) {
         EntityManager em = null;
 
@@ -89,20 +72,13 @@ public class UserHibController {
             em = getEntityManager();
             em.getTransaction().begin();
             User user = null;
-            try {
-                user = em.getReference(User.class, id);
-                user.getId();
-            } catch (Exception e) {
-                System.out.println("No such user by given Id");
-            }
+            user = em.getReference(User.class, id);
+            user.getId();
+
 
             for (Course c: user.getMyModeratedCourses()) {
                 c.getCourseModerator().remove(user);
             }
-
-//            for (Course c: user.getMyEnrolledCourses()) {
-//                c.getStudents().remove(user);
-//            }
 
             em.remove(user);
             em.getTransaction().commit();
@@ -117,18 +93,16 @@ public class UserHibController {
     public List<User> getAllUsers() {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery query = em.getCriteriaBuilder().createQuery();
+            CriteriaQuery<Object> query = em.getCriteriaBuilder().createQuery();
             query.select(query.from(User.class));
             Query q = em.createQuery(query);
             return q.getResultList();
         }catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+             em.close();
         }
-        return null;
+        return Collections.emptyList();
     }
 
 
@@ -136,21 +110,20 @@ public class UserHibController {
     public List<Person> getAllPersons() {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery query = em.getCriteriaBuilder().createQuery();
+            CriteriaQuery<Object> query = em.getCriteriaBuilder().createQuery();
             query.select(query.from(Person.class));
             Query q = em.createQuery(query);
             return q.getResultList();
         }catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+            em.close();
         }
-        return null;
+        return Collections.emptyList();
     }
 
     public Person getPersonById(int id) {
+        Logger logger = Logger.getLogger(UserHibController.class.getName());
         EntityManager em = null;
         Person person = null;
         try {
@@ -159,7 +132,7 @@ public class UserHibController {
             person = em.find(Person.class, id);
             em.getTransaction().commit();
         }catch (Exception e) {
-            System.out.println("No such student by given Id");
+            logger.log(Level.WARNING,"No such student by given Id");
         }
 
         return person;
@@ -168,21 +141,20 @@ public class UserHibController {
     public List<Company> getAllCompanies() {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery query = em.getCriteriaBuilder().createQuery();
+            CriteriaQuery<Object> query = em.getCriteriaBuilder().createQuery();
             query.select(query.from(Company.class));
             Query q = em.createQuery(query);
             return q.getResultList();
         }catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (em != null) {
-                em.close();
-            }
+            em.close();
         }
-        return null;
+        return Collections.emptyList();
     }
 
     public Company getCompanyById(int id) {
+        Logger logger = Logger.getLogger(FolderHibController.class.getName());
         EntityManager em = null;
         Company company = null;
         try {
@@ -191,13 +163,14 @@ public class UserHibController {
             company = em.find(Company.class, id);
             em.getTransaction().commit();
         }catch (Exception e) {
-            System.out.println("No such company by given Id");
+            logger.log(Level.WARNING,"No such company by given Id");
         }
 
         return company;
     }
 
     public User getUserById(int id) {
+        Logger logger = Logger.getLogger(FolderHibController.class.getName());
         EntityManager em = null;
         User user = null;
         try {
@@ -206,7 +179,7 @@ public class UserHibController {
             user = em.find(User.class, id);
             em.getTransaction().commit();
         }catch (Exception e) {
-            System.out.println("No such user by given Id");
+            logger.log(Level.WARNING,"No such user by given Id");
         }
 
         return user;
@@ -214,7 +187,7 @@ public class UserHibController {
 
     public User getUserByLogin(String login) {
         EntityManager em = getEntityManager();
-
+        Logger logger = Logger.getLogger(FolderHibController.class.getName());
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> query = cb.createQuery(User.class);
         Root<User> root = query.from(User.class);
@@ -225,7 +198,7 @@ public class UserHibController {
             q = em.createQuery(query);
             return (User) q.getSingleResult();
         } catch (NoResultException e) {
-            System.out.println("No such user exists by given login");
+            logger.log(Level.WARNING,"No such user exists by given login");
             return null;
         }
     }
@@ -240,11 +213,13 @@ public class UserHibController {
         query.select(root).where(cb.like(root.get("password"), password));
         Query q;
 
+        Logger logger = Logger.getLogger(UserHibController.class.getName());
+
         try {
             q = em.createQuery(query);
             return (User) q.getSingleResult();
         } catch (NoResultException e) {
-            System.out.println("No such user exists");
+            logger.log(Level.WARNING, "No such user exists");
             return null;
         }
     }
