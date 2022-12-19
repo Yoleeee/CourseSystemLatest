@@ -5,9 +5,6 @@ module com.coursesys.coursesystem23 {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires java.persistence;
-    requires spring.web;
-    requires spring.context;
-    requires spring.core;
     requires com.google.gson;
 
 
