@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coursesys.coursesystem23.fxControllers.AllUsersForm">
+   <children>
+      <TableView fx:id="usersTable" prefHeight="400.0" prefWidth="1381.0">
+        <columns>
+          <TableColumn fx:id="idCol" text="id" />
+          <TableColumn fx:id="loginCol" prefWidth="111.0" text="login" />
+            <TableColumn fx:id="passwordCol" prefWidth="141.0" text="password" />
+            <TableColumn fx:id="createdCol" prefWidth="107.0" text="date created" />
+            <TableColumn fx:id="modifiedCol" prefWidth="113.0" text="date modified" />
+            <TableColumn fx:id="nameCol" prefWidth="85.0" text="name" />
+            <TableColumn fx:id="surnameCol" prefWidth="94.0" text="surname" />
+            <TableColumn fx:id="emailCol" prefWidth="120.0" text="email" />
+            <TableColumn fx:id="companyCol" prefWidth="129.0" text="company" />
+            <TableColumn fx:id="phoneCol" prefWidth="99.0" text="phone number" />
+            <TableColumn fx:id="repCol" prefWidth="101.0" text="representative" />
+            <TableColumn fx:id="addressCol" prefWidth="100.0" text="address" />
+            <TableColumn fx:id="dummyField" prefWidth="100.0" text="action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

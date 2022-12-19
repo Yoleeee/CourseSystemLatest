@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="392.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coursesys.coursesystem23.fxControllers.OpenedFolder">
+   <children>
+      <ListView fx:id="listFiles" layoutX="14.0" layoutY="43.0" onMouseClicked="#showInfoAboutFile" prefHeight="255.0" prefWidth="210.0" />
+      <Label layoutX="14.0" layoutY="26.0" text="Files:" />
+      <Button fx:id="deleteB" layoutX="40.0" layoutY="331.0" mnemonicParsing="false" onAction="#deleteFile" prefHeight="25.0" prefWidth="105.0" text="Delete" />
+      <Button fx:id="editButton" layoutX="254.0" layoutY="331.0" mnemonicParsing="false" onAction="#editFile" prefHeight="25.0" prefWidth="114.0" text="Edit" />
+      <Label layoutX="227.0" layoutY="43.0" text="File name:" />
+      <TextField fx:id="fileNameF" editable="false" layoutX="227.0" layoutY="60.0" prefHeight="25.0" prefWidth="188.0" />
+      <Label layoutX="227.0" layoutY="92.0" text="File location:" />
+      <TextField fx:id="fileLocationF" editable="false" layoutX="227.0" layoutY="109.0" prefHeight="25.0" prefWidth="188.0" />
+      <Label layoutX="227.0" layoutY="145.0" text="File location:" />
+      <Text fx:id="fileFOlderT" layoutX="227.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.0" />
+      <Button fx:id="saveB" layoutX="254.0" layoutY="331.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="25.0" prefWidth="114.0" text="Save" visible="false" />
+   </children>
+</AnchorPane>

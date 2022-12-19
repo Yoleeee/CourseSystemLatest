@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coursesys.coursesystem23.fxControllers.MainCoursesysWindow">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="731.0">
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#openMainWindow" text="Home" />
+          <Menu mnemonicParsing="false" onAction="#openMyAccount" text="My account">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Open" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Courses">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#newCourseForm" text="Create New Course" />
+                  <MenuItem fx:id="enrolledCoursesMenu" mnemonicParsing="false" onAction="#openMyAddedCourses" text="My Enrolled Courses" />
+                  <MenuItem mnemonicParsing="false" onAction="#openMyModeratedCourses" text="My Moderated Courses" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuUsers" mnemonicParsing="false" text="Users" visible="false">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openListOfUsers" text="Open" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ListView fx:id="coursesList" layoutX="15.0" layoutY="64.0" onMouseClicked="#showDescription" prefHeight="273.0" prefWidth="351.0" />
+      <Button fx:id="addB" layoutX="125.0" layoutY="355.0" mnemonicParsing="false" onAction="#addToMyCourses" prefHeight="25.0" prefWidth="126.0" text="Add to my courses" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="475.0" />
+      <Text fx:id="courseDescriptionF" layoutX="378.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="341.0" />
+      <Label layoutX="378.0" layoutY="68.0" text="Description" />
+      <Label layoutX="14.0" layoutY="40.0" text="List of all courses" />
+   </children>
+</AnchorPane>

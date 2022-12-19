@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coursesys.coursesystem23.fxControllers.MyAddedCourses">
+   <children>
+      <MenuBar layoutX="-9.0" layoutY="2.0" prefHeight="25.0" prefWidth="731.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openMainWindow" text="Open" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#openMyAccount" text="My account">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Open" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Courses">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#newCourseForm" text="Create New Course" />
+                  <MenuItem fx:id="enrolledCoursesMenu" mnemonicParsing="false" onAction="#openMyAddedCourses" text="My Enrolled Courses" />
+                  <MenuItem mnemonicParsing="false" onAction="#openMyModeratedCourses" text="My Moderated Courses" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuUsers" mnemonicParsing="false" text="Users" visible="false">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openListOfUsers" text="Users" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <ListView fx:id="myCoursesList" layoutX="24.0" layoutY="78.0" onMouseClicked="#showFolders" prefHeight="273.0" prefWidth="351.0" />
+      <Label fx:id="coursesL" layoutX="24.0" layoutY="50.0" text="My Courses" />
+      <TreeView fx:id="courseFolders" layoutX="393.0" layoutY="78.0" onMouseClicked="#openFolder" prefHeight="273.0" prefWidth="296.0" />
+      <Label layoutX="393.0" layoutY="50.0" text="Folders" />
+      <Button layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#leaveCourse" text="Leave course" />
+   </children>
+</AnchorPane>

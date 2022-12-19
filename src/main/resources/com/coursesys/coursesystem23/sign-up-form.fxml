@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="478.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coursesys.coursesystem23.fxControllers.SignUpForm">
+   <children>
+      <TextField fx:id="loginF" layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="220.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Login:" />
+      <PasswordField fx:id="passwordF" layoutX="14.0" layoutY="88.0" prefHeight="25.0" prefWidth="220.0" />
+      <Label layoutX="14.0" layoutY="71.0" text="Password:" />
+      <RadioButton fx:id="studentRadio" layoutX="16.0" layoutY="136.0" mnemonicParsing="false" onAction="#enableFields" selected="true" text="Student">
+         <toggleGroup>
+            <ToggleGroup fx:id="userType" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="companyRadio" layoutX="88.0" layoutY="136.0" mnemonicParsing="false" onAction="#enableFields" text="Company" toggleGroup="$userType" />
+      <Label fx:id="studentNameL" layoutX="16.0" layoutY="167.0" text="Name:" />
+      <Label fx:id="studentSurnameL" layoutX="16.0" layoutY="221.0" text="Surname:" />
+      <Label fx:id="studentPhoneL" layoutX="16.0" layoutY="279.0" text="Phone number:" />
+      <Label fx:id="studentEmailL" layoutX="16.0" layoutY="340.0" text="Email:" />
+      <Label fx:id="companyNameL" layoutX="16.0" layoutY="167.0" text="Company name:" visible="false" />
+      <Label fx:id="companyRepL" layoutX="16.0" layoutY="221.0" text="Company repository:" visible="false" />
+      <Label fx:id="companyAddressL" layoutX="16.0" layoutY="279.0" text="Adress:" visible="false" />
+      <Label fx:id="companyPhoneL" layoutX="16.0" layoutY="340.0" text="Phone number:" visible="false" />
+      <Button layoutX="16.0" layoutY="413.0" mnemonicParsing="false" onAction="#createUser" prefHeight="25.0" prefWidth="111.0" text="Create" />
+      <Button layoutX="153.0" layoutY="413.0" mnemonicParsing="false" onAction="#closeForm" prefHeight="25.0" prefWidth="81.0" text="Cancel" />
+      <TextField fx:id="firstF" layoutX="16.0" layoutY="184.0" prefHeight="25.0" prefWidth="220.0" />
+      <TextField fx:id="secondF" layoutX="17.0" layoutY="239.0" prefHeight="25.0" prefWidth="220.0" />
+      <TextField fx:id="thirdF" layoutX="14.0" layoutY="296.0" prefHeight="25.0" prefWidth="220.0" />
+      <TextField fx:id="fourthF" layoutX="14.0" layoutY="357.0" prefHeight="25.0" prefWidth="220.0" />
+   </children>
+</AnchorPane>
